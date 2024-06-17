@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.routers import usuarios
+from app.routers import usuarios,auth
 from .database import engine,Base
 from fastapi.responses import RedirectResponse
 
@@ -16,3 +16,4 @@ def main():
     return RedirectResponse(url="/docs/")
 
 app.include_router(usuarios.routerUsuario)
+app.include_router(auth.login_user)
