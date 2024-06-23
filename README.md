@@ -1,6 +1,6 @@
 ![](https://cosasdedevs.com/media/sections/images/fastapi.png)
 
-![](https://img.shields.io/github/stars/pandao/editor.md.svg) ![](https://img.shields.io/github/forks/pandao/editor.md.svg) ![](https://img.shields.io/github/tag/pandao/editor.md.svg) ![](https://img.shields.io/github/release/pandao/editor.md.svg) ![](https://img.shields.io/github/issues/pandao/editor.md.svg) ![](https://img.shields.io/bower/v/editor.md.svg)
+![](https://img.shields.io/github/stars/pandao/editor.md.svg) ![](https://img.shields.io/github/forks/pandao/editor.md.svg) ![](https://img.shields.io/github/tag/pandao/editor.md.svg) ![](https://img.shields.io/github/release/pandao/editor.md.svg) ![](https://img.shields.io/github/issues/pandao/editor.md.svg) ![](https://img.shields.io/bower/v/editor.md.svg) 
 
 
 # Ferremas API
@@ -56,6 +56,33 @@ venv\Scripts\activate # En MacOs usa `source env/bin/activate`
 <p>
 Una vez que el servidor está en funcionamiento, puedes acceder a la documentación interactiva de la API proporcionada por Swagger en http://127.0.0.1:8000/docs o la documentación en formato ReDoc en http://127.0.0.1:8000/redoc.
 </p>
+
+### Ejemplos de Endpoints
+
+#### Usuarios
+
+- POST /ususario/: Crear un nuevo usuario.
+- GET /ususario/{id}/: Obtener detalles de un usuario.
+- PUT /ususario/{id}/: Actualizar un usuario.
+- DELETE /ususario/{id}/: Eliminar un usuario.
+
+#### Productos
+
+- POST /productos/: Crear un nuevo producto.
+- GET /productos/{id}/: Obtener detalles de un producto.
+- PUT /productos/{id}/: Actualizar un producto.
+- DELETE /productos/{id}/: Eliminar un producto.
+
+#### Órdenes de Compra
+
+- POST /orden/: Crear una nueva orden de compra.
+- GET /orden/{id}/: Obtener detalles de una orden de compra.
+- PUT /orden/{id}/: Actualizar una orden de compra.
+- DELETE /orden/{id}/: Eliminar una orden de compra.
+
+### Autenticación
+
+- POST /token: Obtener un token JWT para autenticación.
 
 # Base de datos
 ![](https://raw.githubusercontent.com/stephenlucic/ferremasfa/main/ferremas_dbb.png)
