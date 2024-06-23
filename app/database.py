@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 
 
 
-database_url = "mysql+pymysql://root:@localhost:3306/db_ferremas"
+database_url = "mysql+pymysql://root:@localhost:3306/ferremas_db"
 
 engine= create_engine(database_url)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

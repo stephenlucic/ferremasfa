@@ -3,6 +3,14 @@ from typing import Optional
 
 class ordenes(BaseModel):
     id: Optional[int]=None
-    detalle: str
+    fecha_orden: str
     usuario_id: int
-    producto_id:int
+    estado:str
+
+class ordenesUpdate(BaseModel):
+    fecha_orden: str
+    usuario_id: int
+    estado:str
+        
+
+

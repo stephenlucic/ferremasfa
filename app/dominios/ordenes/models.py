@@ -3,8 +3,8 @@ from sqlalchemy.orm import relationship
 from ...database import Base
 
 class Ordenes(Base):
-    __tablename__='ordenes'
+    __tablename__='orden_compra'
     id=Column(Integer, primary_key=True)
-    detalle=Column(String)
+    fecha_orden=Column(String)
     usuario_id= Column(Integer)
-    producto_id= Column(Integer)
+    estado= Column(String)
