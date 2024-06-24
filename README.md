@@ -85,4 +85,11 @@ Una vez que el servidor está en funcionamiento, puedes acceder a la documentaci
 - POST /token: Obtener un token JWT para autenticación.
 
 # Base de datos
-![](https://raw.githubusercontent.com/stephenlucic/ferremasfa/main/ferremas_dbb.png)
+![base_de_datos_ferremas](./ferremas_dbb.png)
+
+
+# Grupo
+- Carla Adasme
+- Evelyn Soto
+- Lucas Fuenzalida
+- Stephen Lucic

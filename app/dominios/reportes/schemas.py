@@ -1,37 +1,36 @@
 from pydantic import BaseModel
 from typing import Optional
 
-class ordenes(BaseModel):
+class reportes(BaseModel):
     id: Optional[int]=None
-    fecha_orden: str
     usuario_id: int
-    estado:str
+    tipo:str
+    fecha_generada:str
 
     model_config = {
         'json_schema_extra':{
             'example':{
                 'id':1,
-                'fecha_orden':"30/12/2024",
                 'usuario_id':1,
-                'estado':"terminado"              
+                'tipo':"ventas totales",
+                'fecha_generada':"30/12/2024"              
             }
         }
-    } 
+    }
 
-class ordenesUpdate(BaseModel):
-    fecha_orden: str
+class reportesUpdate(BaseModel):
     usuario_id: int
-    estado:str
+    tipo:str
+    fecha_generada:str
 
     model_config = {
         'json_schema_extra':{
             'example':{
-                'fecha_orden':"30/12/2024",
                 'usuario_id':1,
-                'estado':"terminado"              
+                'tipo':"ventas totales",
+                'fecha_generada':"30/12/2024"              
             }
         }
     }
         
-
 

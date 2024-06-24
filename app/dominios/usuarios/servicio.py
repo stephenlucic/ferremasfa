@@ -10,7 +10,7 @@ def get_usuarios(db:Session):
 def get_usuario(id:int, db:Session):
     return repositorio.get_usuario(id=id, db=db)
 
-def update_usuario(id:int, usuario:schemas.usuario, db:Session):
+def update_usuario(id:int, usuario:schemas.usuarioUpdate, db:Session):
     return repositorio.update_usuario(id=id,usuario=usuario,db=db)
 
 def delete_usuario(id:int, db:Session):

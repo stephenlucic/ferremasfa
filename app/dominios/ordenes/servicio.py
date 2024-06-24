@@ -10,7 +10,7 @@ def get_ordenes(db:Session):
 def get_orden(id:int, db:Session):
     return repositorio.get_orden(id=id, db=db)
 
-def update_orden(id:int, orden:schemas.ordenes, db:Session):
+def update_orden(id:int, orden:schemas.ordenesUpdate, db:Session):
     return repositorio.update_orden(id=id,orden=orden,db=db)
 
 def delete_orden(id:int, db:Session):

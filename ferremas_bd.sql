@@ -3,10 +3,7 @@ CREATE TABLE `producto` (
   `nombre` varchar(255),
   `descripcion` varchar(255),
   `precio` float,
-  `categoria` varchar(255),
-  `inventario_id` integer,
-  `oferta_id` integer,
-  `orden_id` integer
+  `categoria` varchar(255)
 );
 
 CREATE TABLE `orden_compra` (
@@ -16,12 +13,22 @@ CREATE TABLE `orden_compra` (
   `estado` varchar(255)
 );
 
+CREATE TABLE `ventas` (
+  `id` integer PRIMARY KEY,
+  `fecha_emision` varchar(255),
+  `cantidad` varchar(255),
+  `monto` float,
+  `producto_id` integer,
+  `orden_id` integer
+);
+
 CREATE TABLE `oferta` (
   `id` integer PRIMARY KEY,
   `descuento` float,
   `fecha_inicio` varchar(255),
   `fecha_fin` varchar(255),
-  `sucursal_id` integer
+  `sucursal_id` integer,
+  `producto_id` integer
 );
 
 CREATE TABLE `usuario` (
@@ -50,7 +57,8 @@ CREATE TABLE `reporte` (
 CREATE TABLE `inventario` (
   `id` integer PRIMARY KEY,
   `cantidad` integer,
-  `sucursal_id` integer
+  `sucursal_id` integer,
+  `producto_id` integer
 );
 
 CREATE TABLE `sucursal` (
@@ -59,16 +67,18 @@ CREATE TABLE `sucursal` (
   `direccion` varchar(255)
 );
 
-ALTER TABLE `producto` ADD FOREIGN KEY (`inventario_id`) REFERENCES `inventario` (`id`);
+ALTER TABLE `inventario` ADD FOREIGN KEY (`producto_id`) REFERENCES `producto` (`id`);
 
 ALTER TABLE `orden_compra` ADD FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`);
 
 ALTER TABLE `boleta_factura` ADD FOREIGN KEY (`orden_id`) REFERENCES `orden_compra` (`id`);
 
-ALTER TABLE `producto` ADD FOREIGN KEY (`oferta_id`) REFERENCES `oferta` (`id`);
+ALTER TABLE `oferta` ADD FOREIGN KEY (`producto_id`) REFERENCES `producto` (`id`);
 
 ALTER TABLE `reporte` ADD FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`);
 
 ALTER TABLE `oferta` ADD FOREIGN KEY (`sucursal_id`) REFERENCES `sucursal` (`id`);
 
-ALTER TABLE `producto` ADD FOREIGN KEY (`orden_id`) REFERENCES `orden_compra` (`id`);
+ALTER TABLE `ventas` ADD FOREIGN KEY (`orden_id`) REFERENCES `orden_compra` (`id`);
+
+ALTER TABLE `ventas` ADD FOREIGN KEY (`producto_id`) REFERENCES `producto` (`id`);
