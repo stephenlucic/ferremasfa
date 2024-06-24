@@ -3,7 +3,8 @@
 ![](https://img.shields.io/github/stars/pandao/editor.md.svg) ![](https://img.shields.io/github/forks/pandao/editor.md.svg) ![](https://img.shields.io/github/tag/pandao/editor.md.svg) ![](https://img.shields.io/github/release/pandao/editor.md.svg) ![](https://img.shields.io/github/issues/pandao/editor.md.svg) ![](https://img.shields.io/bower/v/editor.md.svg) 
 
 
-# Ferremas API
+# API Ferremas
+
 
 <p>
 Ferremas API es una aplicación desarrollada con FastAPI que proporciona una solución completa para la gestión de una ferretería. La API permite la creación, actualización, visualización y eliminación de usuarios, productos, órdenes de compra, boletas/facturas, inventarios, ofertas, ventas, entre otros. La autenticación se maneja mediante tokens JWT y el esquema de autenticación Bearer.
