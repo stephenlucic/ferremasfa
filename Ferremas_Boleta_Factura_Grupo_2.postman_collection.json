@@ -1,0 +1,340 @@
+{
+	"info": {
+		"_postman_id": "f4b4d53b-7d84-427e-b915-645392ca344b",
+		"name": "Ferremas_Boleta_Factura_Grupo_2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34174497"
+	},
+	"item": [
+		{
+			"name": "Token Boleta_Factura",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "admin",
+						"value": "true"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Key",
+						"value": "Content-Type",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"yerko@gmail.com\",\n    \"password\": \"123\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Boleta_Factura",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "admin",
+						"value": "true"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Key",
+						"value": "Content-Type",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cantidad\": 10,\n    \"fecha_emision\": \"30/12/2024\",\n    \"id\": 2,\n    \"monto_total\": 100,\n    \"orden_id\": 2\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/boleta_factura/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"boleta_factura",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Sucursal",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "admin",
+						"value": "true"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Key",
+						"value": "Content-Type",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"estado\": \"terminado\",\n    \"fecha_orden\": \"30/12/2024\",\n    \"id\": 2,\n    \"usuario_id\": 2\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/ordenes/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"ordenes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Boleta_Factura ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "admin",
+						"value": "true"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTlkYmRkNzA3OTMyNGJjMmJjMjgyY2EiLCJyb2xlIjoidXNlciIsImNvbXBhbnkiOiI2NTlkYmRiZjI5ODIxNDBkMTM2YWE5YTgiLCJkYXRlIjoxNzEzNDYzOTAzMzIzLCJpcnQiOnRydWUsImlhdCI6MTcxMzQ2MzkwMywiZXhwIjoxNzE0MDY4NzAzfQ.s5iwPier9sOvB-3gpuy7qEEvdn8bDafkf1wkjFWUA4M"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/boleta_factura/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"boleta_factura",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Boleta_Factura",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "admin",
+						"value": "true"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTlkYmRkNzA3OTMyNGJjMmJjMjgyY2EiLCJyb2xlIjoidXNlciIsImNvbXBhbnkiOiI2NTlkYmRiZjI5ODIxNDBkMTM2YWE5YTgiLCJkYXRlIjoxNzEzNDYzOTAzMzIzLCJpcnQiOnRydWUsImlhdCI6MTcxMzQ2MzkwMywiZXhwIjoxNzE0MDY4NzAzfQ.s5iwPier9sOvB-3gpuy7qEEvdn8bDafkf1wkjFWUA4M"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/boleta_factura/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"boleta_factura",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Boleta_Factura",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful PUT request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "admin",
+						"value": "true",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Key",
+						"value": "Content-Type",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cantidad\": 10,\n    \"fecha_emision\": \"14/02/2024\",\n    \"monto_total\": 100,\n    \"orden_id\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/boleta_factura/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"boleta_factura",
+						"2"
+					]
+				},
+				"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Boleta_Factura",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful DELETE request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/boleta_factura/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"boleta_factura",
+						"1"
+					]
+				},
+				"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InllcmtvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTIzIn0.Fhq-lI52uPnoPHIkGYBmEXMXISUxZ0fND6TKJNhRWgQ",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

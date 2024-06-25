@@ -1,0 +1,299 @@
+{
+	"info": {
+		"_postman_id": "3b67a307-44b8-4e98-b779-59a4db245456",
+		"name": "Ferremas_Producto_Grupo_2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34174497"
+	},
+	"item": [
+		{
+			"name": "Token Producto",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "admin",
+						"value": "true"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Key",
+						"value": "Content-Type",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"yerko@gmail.com\",\n    \"password\": \"123\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Producto",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "admin",
+						"value": "true"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Key",
+						"value": "Content-Type",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"categoria\": \"herramientas\",\n    \"descripcion\": \"taladro supremo\",\n    \"id\": 5,\n    \"nombre\": \"taladro\",\n    \"precio\": 2000\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/productos/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"productos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Producto ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "admin",
+						"value": "true"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTlkYmRkNzA3OTMyNGJjMmJjMjgyY2EiLCJyb2xlIjoidXNlciIsImNvbXBhbnkiOiI2NTlkYmRiZjI5ODIxNDBkMTM2YWE5YTgiLCJkYXRlIjoxNzEzNDYzOTAzMzIzLCJpcnQiOnRydWUsImlhdCI6MTcxMzQ2MzkwMywiZXhwIjoxNzE0MDY4NzAzfQ.s5iwPier9sOvB-3gpuy7qEEvdn8bDafkf1wkjFWUA4M"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/productos/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"productos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Productos",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "admin",
+						"value": "true"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTlkYmRkNzA3OTMyNGJjMmJjMjgyY2EiLCJyb2xlIjoidXNlciIsImNvbXBhbnkiOiI2NTlkYmRiZjI5ODIxNDBkMTM2YWE5YTgiLCJkYXRlIjoxNzEzNDYzOTAzMzIzLCJpcnQiOnRydWUsImlhdCI6MTcxMzQ2MzkwMywiZXhwIjoxNzE0MDY4NzAzfQ.s5iwPier9sOvB-3gpuy7qEEvdn8bDafkf1wkjFWUA4M"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/productos/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"productos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Producto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful PUT request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "admin",
+						"value": "true",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Key",
+						"value": "Content-Type",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"categoria\": \"herramientas\",\n  \"descripcion\": \"destornillador bueno, muy bueno que te ajusta hasta los tornillos de la cabeza\",\n  \"id\": 5,\n  \"nombre\": \"destornillador\",\n  \"precio\": 15000\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/productos/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"productos",
+						"2"
+					]
+				},
+				"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Producto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful DELETE request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/productos/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"productos",
+						"1"
+					]
+				},
+				"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InllcmtvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTIzIn0.Fhq-lI52uPnoPHIkGYBmEXMXISUxZ0fND6TKJNhRWgQ",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
