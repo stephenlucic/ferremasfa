@@ -33,6 +33,7 @@ Ferremas API es una aplicación desarrollada con FastAPI que proporciona una sol
 - Pydantic
 - SQLAlchemy 
 - requeriments.txt
+- XAMPP
 
 # Instalación
 - Clona el repositorio:
@@ -49,6 +50,8 @@ venv\Scripts\activate # En MacOs usa `source env/bin/activate`
 `pip install -r requeriments.txt`
 
 - Configura las variables de entorno necesarias (e.g., configuración de la base de datos, claves secretas para JWT, etc.)
+
+- Instala e Inicializa XAMPP, activa Apache y MySQL en el puerto 3306
 
 - Inicia el servidor:
 `uvicorn app.main:app --reload`
