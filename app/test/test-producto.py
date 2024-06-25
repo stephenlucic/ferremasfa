@@ -23,17 +23,17 @@ def db() -> Session:
     session.close()
 
 def test_create_producto(db):
-    producto = schemas.productos(id=4, nombre="Taladro", descripcion="Taladro bauker", precio= 50000, categoria="maquinas")
+    producto = schemas.productos(id=22, nombre="Taladro", descripcion="Taladro bauker", precio= 50000, categoria="maquinas")
     producto_creado = create_producto(producto, db)
-    assert producto_creado.id == 4
+    assert producto_creado.id == 22
     assert producto_creado.nombre == "Taladro"
     assert producto_creado.descripcion == "Taladro bauker"
     assert producto_creado.precio == 50000
     assert producto_creado.categoria == "maquinas"
 
 def test_get_producto(db):
-    producto = producto = schemas.productos(id=4, nombre="Taladro", descripcion="Taladro bauker", precio= 50000, categoria="maquinas")
+    producto = producto = schemas.productos(id=10, nombre="Taladro", descripcion="Taladro bauker", precio= 50000, categoria="maquinas")
     producto_creado = create_producto(producto, db)
-    obtenter_producto = get_producto(db, producto_creado.id)
+    obtenter_producto = get_producto(producto_creado.id,db)
     assert obtenter_producto
-    assert obtenter_producto.id == 4
+    assert obtenter_producto.id == 10
