@@ -7,7 +7,6 @@ class productos(BaseModel):
     descripcion: str
     precio:float
     categoria:str
-
     model_config = {
         'json_schema_extra':{
             'example':{
@@ -19,10 +18,11 @@ class productos(BaseModel):
             }
         }
     }
+    pass
 
 class productoUpdate(BaseModel):
     nombre: str
-    descripcion: int
+    descripcion: str
     precio:float
     categoria:str
 
@@ -36,5 +36,6 @@ class productoUpdate(BaseModel):
             }
         }
     }
+    pass
 
         

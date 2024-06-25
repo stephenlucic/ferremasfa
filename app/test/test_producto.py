@@ -23,17 +23,29 @@ def db() -> Session:
     session.close()
 
 def test_create_producto(db):
-    producto = schemas.productos(id=22, nombre="Taladro", descripcion="Taladro bauker", precio= 50000, categoria="maquinas")
+    producto = schemas.productos(id=1, nombre="Taladro", descripcion="Taladro bauker", precio= 50000, categoria="maquinas")
     producto_creado = create_producto(producto, db)
-    assert producto_creado.id == 22
+    assert producto_creado.id == 1
     assert producto_creado.nombre == "Taladro"
     assert producto_creado.descripcion == "Taladro bauker"
     assert producto_creado.precio == 50000
     assert producto_creado.categoria == "maquinas"
 
 def test_get_producto(db):
-    producto = producto = schemas.productos(id=10, nombre="Taladro", descripcion="Taladro bauker", precio= 50000, categoria="maquinas")
+    producto = producto = schemas.productos(id=2, nombre="Taladro", descripcion="Taladro bauker", precio= 50000, categoria="maquinas")
     producto_creado = create_producto(producto, db)
     obtenter_producto = get_producto(producto_creado.id,db)
     assert obtenter_producto
-    assert obtenter_producto.id == 10
+    assert obtenter_producto.id == 2
+
+def test_update_producto(db):
+    producto_inicial = schemas.productos(id=12, nombre="Martillo", descripcion="Martillo de acero", precio=30000, categoria="herramientas")
+    producto_creado = create_producto(producto_inicial, db)
+    nuevo_producto = schemas.productoUpdate(nombre="Martillo grande", descripcion="Martillo grande de acero", precio=33000, categoria="herramientas")
+    producto_actualizado = update_producto(producto_creado.id, nuevo_producto, db)
+    assert producto_actualizado
+    assert producto_actualizado.id == producto_creado.id
+    assert producto_actualizado.nombre == nuevo_producto.nombre
+    assert producto_actualizado.descripcion == nuevo_producto.descripcion
+    assert producto_actualizado.precio == nuevo_producto.precio
+    assert producto_actualizado.categoria == nuevo_producto.categoria
