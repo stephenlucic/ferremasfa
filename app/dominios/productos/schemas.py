@@ -4,7 +4,7 @@ from typing import Optional
 class productos(BaseModel):
     id: Optional[int]=None
     nombre: str
-    descripcion: int
+    descripcion: str
     precio:float
     categoria:str
 
