@@ -83,7 +83,9 @@ Una vez que el servidor está en funcionamiento, puedes acceder a la documentaci
 
 ### Autenticación
 
-- POST /token: Obtener un token JWT para autenticación.
+- POST /login: Obtener un token JWT para autenticación y pegar como clave para autorizar los endpoint.
+![autorización_token](./Autorización_token.png)
+
 
 # Base de datos
 ![base_de_datos_ferremas](./ferremas_dbb.png)
