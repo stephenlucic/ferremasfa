@@ -33,4 +33,4 @@ def delete_boleta(id:int, db:Session):
     data=db.query(models.Boletas_Facturas).filter(models.Boletas_Facturas.id==id).first()
     db.delete(data)
     db.commit()
-    return print("se elimino correctamente")    
+    return 

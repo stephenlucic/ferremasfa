@@ -49,3 +49,15 @@ def test_update_oferta(db):
     assert oferta_actualizado.fecha_fin == nuevo_oferta.fecha_fin
     assert oferta_actualizado.sucursal_id == nuevo_oferta.sucursal_id
     assert oferta_actualizado.producto_id == nuevo_oferta.producto_id    
+    
+def test_get_ofertas(db):
+    obtener_oferta = get_ofertas(db)   
+    assert obtener_oferta
+    assert obtener_oferta == db.query(models.Ofertas).all()
+    
+def test_delete_oferta(db):
+    borrar_oferta = delete_oferta(2,db)
+    assert borrar_oferta is None  
+    
+    oferta_eliminada = db.query(models.Ofertas).filter(models.Ofertas.id == 2).first()
+    assert oferta_eliminada is None  

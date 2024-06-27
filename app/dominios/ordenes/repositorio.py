@@ -32,4 +32,5 @@ def delete_orden(id:int, db:Session):
     data=db.query(models.Ordenes).filter(models.Ordenes.id==id).first()
     db.delete(data)
     db.commit()
-    return print("se elimino correctamente")    
+    return 
+    

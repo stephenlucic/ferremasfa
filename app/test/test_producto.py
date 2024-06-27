@@ -48,3 +48,15 @@ def test_update_producto(db):
     assert producto_actualizado.descripcion == nuevo_producto.descripcion
     assert producto_actualizado.precio == nuevo_producto.precio
     assert producto_actualizado.categoria == nuevo_producto.categoria
+    
+def test_get_productos(db):
+    obtener_producto = get_productos(db)   
+    assert obtener_producto
+    assert obtener_producto == db.query(models.Productos).all()
+    
+def test_delete_producto(db):
+    borrar_producto = delete_producto(2,db)
+    assert borrar_producto is None  
+    
+    producto_eliminada = db.query(models.Productos).filter(models.Productos.id == 2).first()
+    assert producto_eliminada is None     

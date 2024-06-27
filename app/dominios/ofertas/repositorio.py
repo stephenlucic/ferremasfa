@@ -34,4 +34,4 @@ def delete_oferta(id:int, db:Session):
     data=db.query(models.Ofertas).filter(models.Ofertas.id==id).first()
     db.delete(data)
     db.commit()
-    return print("se elimino correctamente")    
+    return  

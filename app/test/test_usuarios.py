@@ -48,3 +48,15 @@ def test_update_usuario(db):
     assert usuario_actualizada.apellidos == nueva_usuario.apellidos
     assert usuario_actualizada.email == nueva_usuario.email
     assert usuario_actualizada.direccion == nueva_usuario.direccion
+    
+def test_get_usuarios(db):
+    obtener_usuario = get_usuarios(db)   
+    assert obtener_usuario
+    assert obtener_usuario == db.query(models.Usuario).all()
+    
+def test_delete_usuario(db):
+    borrar_usuario = delete_usuario(2,db)
+    assert borrar_usuario is None  
+    
+    usuario_eliminada = db.query(models.Usuario).filter(models.Usuario.id == 2).first()
+    assert usuario_eliminada is None      

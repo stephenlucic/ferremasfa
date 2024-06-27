@@ -33,9 +33,9 @@ def test_create_orden(db):
 def test_get_orden(db):
     ordenes = schemas.ordenes(id=2,fecha_orden="31 de junio", usuario_id=2, estado="activo")
     orden_creada = create_orden(ordenes, db)
-    obtenter_producto = get_orden(orden_creada.id,db)
-    assert obtenter_producto
-    assert obtenter_producto.id == 2
+    obtenter_orden = get_orden(orden_creada.id,db)
+    assert obtenter_orden
+    assert obtenter_orden.id == 2
     
 def test_update_orden(db):
     ordenes = schemas.ordenes(id=3,fecha_orden="1 de junio", usuario_id=4, estado="activo")
@@ -47,4 +47,18 @@ def test_update_orden(db):
     assert ordenes_actualizada.fecha_orden == nueva_ordenes.fecha_orden
     assert ordenes_actualizada.usuario_id == nueva_ordenes.usuario_id
     assert ordenes_actualizada.estado == nueva_ordenes.estado
+    
+def test_get_ordenes(db):
+    obtener_ordenes = get_ordenes(db)   
+    assert obtener_ordenes
+    assert obtener_ordenes == db.query(models.Ordenes).all()
+    
+def test_delete_orden(db):
+    borrar_orden = delete_orden(2,db)
+    assert borrar_orden is None
+    
+    orden_eliminada = db.query(models.Ordenes).filter(models.Ordenes.id == 2).first()
+    assert orden_eliminada is None
+    
+    
     

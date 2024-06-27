@@ -33,4 +33,4 @@ def delete_producto(id:int, db:Session):
     data=db.query(models.Productos).filter(models.Productos.id==id).first()
     db.delete(data)
     db.commit()
-    return print("se elimino correctamente")    
+    return 

@@ -27,8 +27,8 @@ def update_sucursal(id:int, sucursal:schemas.sucursalUpdate, db:Session):
     return data
 
 def delete_sucursal(id:int, db:Session):
-    db=SessionLocal()
+    
     data=db.query(models.Sucursales).filter(models.Sucursales.id==id).first()
     db.delete(data)
     db.commit()
-    return print("se elimino correctamente")    
+    return   

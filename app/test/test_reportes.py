@@ -48,3 +48,15 @@ def test_update_reporte(db):
     assert reporte_actualizada.tipo == nueva_reporte.tipo
     assert reporte_actualizada.fecha_generada == nueva_reporte.fecha_generada
     
+    
+def test_get_reportes(db):
+    obtener_reporte = get_reportes(db)   
+    assert obtener_reporte
+    assert obtener_reporte == db.query(models.Reportes).all()
+    
+def test_delete_reporte(db):
+    borrar_reporte = delete_reporte(2,db)
+    assert borrar_reporte is None  
+    
+    reporte_eliminada = db.query(models.Reportes).filter(models.Reportes.id == 2).first()
+    assert reporte_eliminada is None 

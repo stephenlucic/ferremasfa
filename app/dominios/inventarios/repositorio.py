@@ -32,4 +32,4 @@ def delete_inventario(id:int, db:Session):
     data=db.query(models.Inventarios).filter(models.Inventarios.id==id).first()
     db.delete(data)
     db.commit()
-    return print("se elimino correctamente")    
+    return   

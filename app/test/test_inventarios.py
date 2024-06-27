@@ -50,5 +50,15 @@ def test_update_inventario(db):
     assert inventario_actualizado.sucursal_id == nuevo_inventario.sucursal_id
     assert inventario_actualizado.producto_id == nuevo_inventario.producto_id
     
+def test_get_inventarios(db):
+    obtener_inventario = get_inventarios(db)   
+    assert obtener_inventario
+    assert obtener_inventario == db.query(models.Inventarios).all()
     
+def test_delete_inventario(db):
+    borrar_inventario = delete_inventario(2,db)
+    assert borrar_inventario is None
+    
+    inventario_eliminada = db.query(models.Inventarios).filter(models.Inventarios.id == 2).first()
+    assert inventario_eliminada is None
  

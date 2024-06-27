@@ -34,4 +34,4 @@ def delete_usuario(id:int, db:Session):
     data=db.query(models.Usuario).filter(models.Usuario.id==id).first()
     db.delete(data)
     db.commit()
-    return print("se elimino correctamente")    
+    return 

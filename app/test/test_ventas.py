@@ -50,3 +50,16 @@ def test_update_venta(db):
     assert venta_actualizada.monto == nueva_venta.monto
     assert venta_actualizada.producto_id == nueva_venta.producto_id
     assert venta_actualizada.orden_id == nueva_venta.orden_id
+    
+    
+def test_get_ventas(db):
+    obtener_venta = get_ventas(db)   
+    assert obtener_venta
+    assert obtener_venta == db.query(models.Ventas).all()
+    
+def test_delete_venta(db):
+    borrar_venta = delete_venta(2,db)
+    assert borrar_venta is None  
+    
+    venta_eliminada = db.query(models.Ventas).filter(models.Ventas.id == 2).first()
+    assert venta_eliminada is None       

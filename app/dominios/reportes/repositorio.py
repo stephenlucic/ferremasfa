@@ -32,4 +32,4 @@ def delete_reporte(id:int, db:Session):
     data=db.query(models.Reportes).filter(models.Reportes.id==id).first()
     db.delete(data)
     db.commit()
-    return print("se elimino correctamente")    
+    return   

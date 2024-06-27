@@ -49,3 +49,15 @@ def test_update_boleta(db):
     assert boleta_actualizada.fecha_emision == nueva_boleta.fecha_emision
     assert boleta_actualizada.monto_total == nueva_boleta.monto_total
     assert boleta_actualizada.cantidad == nueva_boleta.cantidad
+    
+def test_get_boletas(db):
+    obtener_boletas = get_boletas(db)   
+    assert obtener_boletas
+    assert obtener_boletas == db.query(models.Boletas_Facturas).all()
+    
+def test_delete_boleta(db):
+    borrar_boleta = delete_boleta(2,db)
+    assert borrar_boleta is None
+    
+    boleta_eliminada = db.query(models.Boletas_Facturas).filter(models.Boletas_Facturas.id == 2).first()
+    assert boleta_eliminada is None    
