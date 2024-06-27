@@ -3,7 +3,7 @@ from . import models, schemas
 from ...database import SessionLocal
 
 def create_inventario(inventario: schemas.inventarios, db: Session):
-    db= SessionLocal()
+    
     nuevo_inventario= models.Inventarios(**inventario.model_dump())
     db.add(nuevo_inventario)
     db.commit()
@@ -11,15 +11,15 @@ def create_inventario(inventario: schemas.inventarios, db: Session):
     return nuevo_inventario
 
 def get_inventarios(db:Session):
-    db=SessionLocal()
+    
     return db.query(models.Inventarios).all()
 
 def get_inventario(id:int, db:Session):
-    db=SessionLocal()
+    
     return db.query(models.Inventarios).filter(models.Inventarios.id==id).first()
 
 def update_inventario(id:int, inventario:schemas.inventarioUpdate, db:Session):
-    db= SessionLocal()
+    
     data=db.query(models.Inventarios).filter(models.Inventarios.id==id).first()
     data.cantidad = inventario.cantidad
     data.sucursal_id=inventario.sucursal_id
@@ -28,7 +28,7 @@ def update_inventario(id:int, inventario:schemas.inventarioUpdate, db:Session):
     return data
 
 def delete_inventario(id:int, db:Session):
-    db=SessionLocal()
+    
     data=db.query(models.Inventarios).filter(models.Inventarios.id==id).first()
     db.delete(data)
     db.commit()

@@ -3,7 +3,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 from ..dominios.reportes import models, schemas
 from ..dominios.reportes.repositorio import create_reporte,get_reporte,get_reportes,update_reporte,delete_reporte
-from ..dominios.reportes.servicio import create_reporte,get_reporte,get_reportes,update_reporte,delete_reporte
+
 
 # Configurar la base de datos en memoria para pruebas
 SQLALCHEMY_DATABASE_URL = "sqlite:///:memory:"
@@ -36,3 +36,15 @@ def test_get_reporte(db):
     obtenter_reporte = get_reporte(reporte_creado.id,db)
     assert obtenter_reporte
     assert obtenter_reporte.id == 2
+    
+def test_update_reporte(db):
+    reporte = schemas.reportes(id=3,usuario_id=4, tipo="cotizaciones", fecha_generada="16 de marzo")
+    reporte_creado = create_reporte(reporte, db)
+    nueva_reporte = schemas.reportesUpdate(usuario_id=3, tipo="balance del año", fecha_generada="25 de marzo")
+    reporte_actualizada = update_reporte(reporte_creado.id, nueva_reporte, db)
+    assert reporte_actualizada
+    assert reporte_actualizada.id == reporte_creado.id
+    assert reporte_actualizada.usuario_id == nueva_reporte.usuario_id
+    assert reporte_actualizada.tipo == nueva_reporte.tipo
+    assert reporte_actualizada.fecha_generada == nueva_reporte.fecha_generada
+    

@@ -3,7 +3,6 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 from ..dominios.ventas import models, schemas
 from ..dominios.ventas.repositorio import create_ventas,get_venta,get_ventas,update_venta,delete_venta
-from ..dominios.ventas.servicio import create_ventas,get_venta,get_ventas,update_venta,delete_venta
 
 # Configurar la base de datos en memoria para pruebas
 SQLALCHEMY_DATABASE_URL = "sqlite:///:memory:"
@@ -40,9 +39,9 @@ def test_get_venta(db):
     assert obtener_venta.id == 2
 
 def test_update_venta(db):
-    venta = schemas.ventas(id=3, fecha_emision="12 de junio", cantidad=23, monto=43999, producto_id=3, orden_id=3)
+    venta = schemas.ventas(id=4,fecha_emision= "24/12/2023",cantidad=3000,monto=500000,producto_id= 5,orden_id= 5)
     venta_creada = create_ventas(venta, db)
-    nueva_venta = schemas.ventasUpdate(nombre="Martillo grande", descripcion="Martillo grande de acero", precio=33000, categoria="herramientas")
+    nueva_venta = schemas.ventasUpdate(fecha_emision= "21/10/2024",cantidad=10,monto=500,producto_id= 6,orden_id= 6)
     venta_actualizada = update_venta(venta_creada.id, nueva_venta, db)
     assert venta_actualizada
     assert venta_actualizada.id == venta_creada.id

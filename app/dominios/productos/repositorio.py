@@ -3,7 +3,7 @@ from . import models, schemas
 from ...database import SessionLocal
 
 def create_producto(producto: schemas.productos, db: Session):
-    db= SessionLocal()
+    
     nuevo_producto= models.Productos(**producto.model_dump())
     db.add(nuevo_producto)
     db.commit()
@@ -11,15 +11,15 @@ def create_producto(producto: schemas.productos, db: Session):
     return nuevo_producto
 
 def get_productos(db:Session):
-    db=SessionLocal()
+  
     return db.query(models.Productos).all()
 
 def get_producto(id:int, db:Session):
-    db=SessionLocal()
+ 
     return db.query(models.Productos).filter(models.Productos.id==id).first()
 
 def update_producto(id:int, producto:schemas.productoUpdate, db:Session):
-    db= SessionLocal()
+   
     data=db.query(models.Productos).filter(models.Productos.id==id).first()
     data.nombre = producto.nombre
     data.descripcion=producto.descripcion
@@ -29,7 +29,7 @@ def update_producto(id:int, producto:schemas.productoUpdate, db:Session):
     return data
 
 def delete_producto(id:int, db:Session):
-    db=SessionLocal()
+  
     data=db.query(models.Productos).filter(models.Productos.id==id).first()
     db.delete(data)
     db.commit()

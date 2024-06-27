@@ -3,7 +3,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 from ..dominios.boleta_factura import models, schemas
 from ..dominios.boleta_factura.repositorio import create_boleta,get_boleta,get_boletas,update_boleta,delete_boleta
-from ..dominios.boleta_factura.servicio import create_boleta,get_boleta,get_boletas,update_boleta,delete_boleta
+
 
 # Configurar la base de datos en memoria para pruebas
 SQLALCHEMY_DATABASE_URL = "sqlite:///:memory:"
@@ -41,7 +41,7 @@ def test_get_boleta(db):
 def test_update_boleta(db):
     boleta = schemas.boletas(id=3,orden_id=3, fecha_emision="23 de septiembre", monto_total=150000, cantidad=5)
     boleta_creado = create_boleta(boleta, db)
-    nueva_boleta = schemas.boletaUpdate(nombre="Martillo grande", descripcion="Martillo grande de acero", precio=33000, categoria="herramientas")
+    nueva_boleta = schemas.boletaUpdate(orden_id=4,fecha_emision="24 de septiembre", monto_total=2200, cantidad=10)
     boleta_actualizada = update_boleta(boleta_creado.id, nueva_boleta, db)
     assert boleta_actualizada
     assert boleta_actualizada.id == boleta_creado.id

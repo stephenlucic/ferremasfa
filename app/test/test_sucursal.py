@@ -3,7 +3,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 from ..dominios.sucursales import models, schemas
 from ..dominios.sucursales.repositorio import create_sucursal,get_sucursal,get_sucursales,update_sucursal,delete_sucursal
-from ..dominios.sucursales.servicio import create_sucursal,get_sucursal,get_sucursales,update_sucursal,delete_sucursal
+
 
 # Configurar la base de datos en memoria para pruebas
 SQLALCHEMY_DATABASE_URL = "sqlite:///:memory:"
@@ -36,3 +36,14 @@ def test_get_sucursal(db):
     obtenter_sucursal = get_sucursal(sucursal_creada.id, db)
     assert obtenter_sucursal
     assert obtenter_sucursal.id == 2
+    
+def test_update_sucursal(db):
+    sucursal = schemas.sucursales(id=3,nombre="Santiago centro", direccion="Baquedano 123")
+    sucursal_creado = create_sucursal(sucursal, db)
+    nueva_sucursal = schemas.sucursalUpdate(nombre="rancagua", direccion="no existe")
+    sucursal_actualizada = update_sucursal(sucursal_creado.id, nueva_sucursal, db)
+    assert sucursal_actualizada
+    assert sucursal_actualizada.id == sucursal_creado.id
+    assert sucursal_actualizada.nombre == nueva_sucursal.nombre
+    assert sucursal_actualizada.direccion == nueva_sucursal.direccion
+   

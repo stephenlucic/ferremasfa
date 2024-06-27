@@ -3,7 +3,7 @@ from . import models, schemas
 from ...database import SessionLocal
 
 def create_oferta(oferta: schemas.oferta, db: Session):
-    db= SessionLocal()
+    
     nueva_oferta= models.Ofertas(**oferta.model_dump())
     db.add(nueva_oferta)
     db.commit()
@@ -11,15 +11,15 @@ def create_oferta(oferta: schemas.oferta, db: Session):
     return nueva_oferta
 
 def get_ofertas(db:Session):
-    db=SessionLocal()
+    
     return db.query(models.Ofertas).all()
 
 def get_oferta(id:int, db:Session):
-    db=SessionLocal()
+    
     return db.query(models.Ofertas).filter(models.Ofertas.id==id).first()
 
 def update_oferta(id:int, oferta:schemas.ofertaUpdate, db:Session):
-    db= SessionLocal()
+    
     data=db.query(models.Ofertas).filter(models.Ofertas.id==id).first()
     data.descuento = oferta.descuento
     data.fecha_inicio = oferta.fecha_inicio
@@ -30,7 +30,7 @@ def update_oferta(id:int, oferta:schemas.ofertaUpdate, db:Session):
     return data
 
 def delete_oferta(id:int, db:Session):
-    db=SessionLocal()
+    
     data=db.query(models.Ofertas).filter(models.Ofertas.id==id).first()
     db.delete(data)
     db.commit()

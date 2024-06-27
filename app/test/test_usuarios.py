@@ -3,7 +3,6 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 from ..dominios.usuarios import models, schemas
 from ..dominios.usuarios.repositorio import create_usuario,get_usuario,get_usuarios,update_usuario,delete_usuario
-from ..dominios.usuarios.servicio import create_usuario,get_usuario,get_usuarios,update_usuario,delete_usuario
 
 # Configurar la base de datos en memoria para pruebas
 SQLALCHEMY_DATABASE_URL = "sqlite:///:memory:"
@@ -37,3 +36,15 @@ def test_get_usuario(db):
     obtener_usuario = get_usuario(usuario_creado.id,db)
     assert obtener_usuario
     assert obtener_usuario.id == 2
+    
+def test_update_usuario(db):
+    usuario = schemas.usuario(id=3,nombre="pedrio", apellidos="martinez", email="martinez@gmail.com", direccion="ayahuasca 222")
+    usuario_creado = create_usuario(usuario, db)
+    nueva_usuario = schemas.usuarioUpdate(nombre="pedro", apellidos="carrasco", email="carrasco@gmail.com", direccion="flores 222")
+    usuario_actualizada = update_usuario(usuario_creado.id, nueva_usuario, db)
+    assert usuario_actualizada
+    assert usuario_actualizada.id == usuario_creado.id
+    assert usuario_actualizada.nombre == nueva_usuario.nombre
+    assert usuario_actualizada.apellidos == nueva_usuario.apellidos
+    assert usuario_actualizada.email == nueva_usuario.email
+    assert usuario_actualizada.direccion == nueva_usuario.direccion

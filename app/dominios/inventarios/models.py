@@ -6,6 +6,6 @@ class Inventarios(Base):
     __tablename__='inventario'
     id=Column(Integer, primary_key=True)
     cantidad= Column(Integer)
-    sucursal_id=Column(String)
+    sucursal_id=Column(Integer)
     producto_id= Column(Integer)
     

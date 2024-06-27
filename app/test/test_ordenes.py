@@ -3,7 +3,6 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 from ..dominios.ordenes import models, schemas
 from ..dominios.ordenes.repositorio import create_orden,get_orden,get_ordenes,update_orden,delete_orden
-from ..dominios.ordenes.servicio import create_orden,get_orden,get_ordenes,update_orden,delete_orden
 
 # Configurar la base de datos en memoria para pruebas
 SQLALCHEMY_DATABASE_URL = "sqlite:///:memory:"
@@ -37,3 +36,15 @@ def test_get_orden(db):
     obtenter_producto = get_orden(orden_creada.id,db)
     assert obtenter_producto
     assert obtenter_producto.id == 2
+    
+def test_update_orden(db):
+    ordenes = schemas.ordenes(id=3,fecha_orden="1 de junio", usuario_id=4, estado="activo")
+    ordenes_creado = create_orden(ordenes, db)
+    nueva_ordenes = schemas.ordenesUpdate(fecha_orden="10 de junio", usuario_id=3, estado="pendiente")
+    ordenes_actualizada = update_orden(ordenes_creado.id, nueva_ordenes, db)
+    assert ordenes_actualizada
+    assert ordenes_actualizada.id == ordenes_creado.id
+    assert ordenes_actualizada.fecha_orden == nueva_ordenes.fecha_orden
+    assert ordenes_actualizada.usuario_id == nueva_ordenes.usuario_id
+    assert ordenes_actualizada.estado == nueva_ordenes.estado
+    

@@ -3,7 +3,6 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 from ..dominios.productos import models, schemas
 from ..dominios.productos.repositorio import create_producto, get_producto, get_productos, delete_producto, update_producto
-from ..dominios.productos.servicio import create_producto, get_producto, get_productos, update_producto, delete_producto
 
 # Configurar la base de datos en memoria para pruebas
 SQLALCHEMY_DATABASE_URL = "sqlite:///:memory:"

@@ -3,7 +3,7 @@ from . import models, schemas
 from ...database import SessionLocal
 
 def create_boleta(boleta: schemas.boletas, db: Session):
-    db= SessionLocal()
+   
     nueva_boleta= models.Boletas_Facturas(**boleta.model_dump())
     db.add(nueva_boleta)
     db.commit()
@@ -11,15 +11,15 @@ def create_boleta(boleta: schemas.boletas, db: Session):
     return nueva_boleta
 
 def get_boletas(db:Session):
-    db=SessionLocal()
+
     return db.query(models.Boletas_Facturas).all()
 
 def get_boleta(id:int, db:Session):
-    db=SessionLocal()
+    
     return db.query(models.Boletas_Facturas).filter(models.Boletas_Facturas.id==id).first()
 
 def update_boleta(id:int, boleta:schemas.boletaUpdate, db:Session):
-    db= SessionLocal()
+   
     data=db.query(models.Boletas_Facturas).filter(models.Boletas_Facturas.id==id).first()
     data.orden_id = boleta.orden_id
     data.fecha_emision=boleta.fecha_emision
@@ -29,7 +29,7 @@ def update_boleta(id:int, boleta:schemas.boletaUpdate, db:Session):
     return data
 
 def delete_boleta(id:int, db:Session):
-    db=SessionLocal()
+    
     data=db.query(models.Boletas_Facturas).filter(models.Boletas_Facturas.id==id).first()
     db.delete(data)
     db.commit()
