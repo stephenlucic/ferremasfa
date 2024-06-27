@@ -16,7 +16,7 @@ CREATE TABLE `orden_compra` (
 CREATE TABLE `ventas` (
   `id` integer PRIMARY KEY,
   `fecha_emision` varchar(255),
-  `cantidad` varchar(255),
+  `cantidad` integer,
   `monto` float,
   `producto_id` integer,
   `orden_id` integer
