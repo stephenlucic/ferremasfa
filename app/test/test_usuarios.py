@@ -17,9 +17,12 @@ models.Base.metadata.create_all(bind=engine)
 @pytest.fixture(scope="module")
 def db() -> Session:
     # Crear una sesión de base de datos para pruebas
-    session = TestingSessionLocal()
-    yield session
-    session.close()
+    db = TestingSessionLocal()
+    try:
+        yield db
+    finally:    
+        models.Base.metadata.drop_all(bind=engine)
+        db.close()
 
 def test_create_usuario(db):
     usuario = schemas.usuario(id=1,nombre="Juanito", apellidos="Ayala", email="juanitoayala123@gmail.com", direccion="La bala 123")

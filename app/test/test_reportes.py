@@ -18,9 +18,12 @@ models.Base.metadata.create_all(bind=engine)
 @pytest.fixture(scope="module")
 def db() -> Session:
     # Crear una sesión de base de datos para pruebas
-    session = TestingSessionLocal()
-    yield session
-    session.close()
+    db = TestingSessionLocal()
+    try:
+        yield db
+    finally:    
+        models.Base.metadata.drop_all(bind=engine)
+        db.close()
 
 def test_create_reporte(db):
     reporte = schemas.reportes(id=1,usuario_id=1, tipo="venta", fecha_generada="12 de marzo")

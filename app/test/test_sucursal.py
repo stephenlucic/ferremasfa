@@ -18,9 +18,12 @@ models.Base.metadata.create_all(bind=engine)
 @pytest.fixture(scope="module")
 def db() -> Session:
     # Crear una sesión de base de datos para pruebas
-    session = TestingSessionLocal()
-    yield session
-    session.close()
+    db = TestingSessionLocal()
+    try:
+        yield db
+    finally:    
+        models.Base.metadata.drop_all(bind=engine)
+        db.close()
 
 def test_create_sucursal(db):
     sucursal = schemas.sucursales(id=1,nombre="Santiago centro", direccion="Baquedano 123")
