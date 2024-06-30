@@ -51,7 +51,9 @@ venv\Scripts\activate # En MacOs usa `source env/bin/activate`
 
 - Configura las variables de entorno necesarias (e.g., configuración de la base de datos, claves secretas para JWT, etc.)
 
-- Instala e Inicializa XAMPP, activa Apache y MySQL en el puerto 3306
+- Instala e Inicializa XAMPP, activa Apache y MySQL en el puerto 3306. 
+
+- Importar la base de datos con el nombre de ferremas_db
 
 - Inicia el servidor:
 `uvicorn app.main:app --reload`
