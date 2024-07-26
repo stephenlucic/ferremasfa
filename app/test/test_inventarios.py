@@ -36,14 +36,14 @@ def test_create_inventario(db):
 
 
 def test_get_inventario(db):
-    inventario = inventario = schemas.inventarios(id=2,cantidad=100,sucursal_id=2, producto_id=2)
+    inventario = schemas.inventarios(id=2,cantidad=100,sucursal_id=2, producto_id=2)
     inventario_creado = create_inventario(inventario, db)
     obtenter_inventario = get_inventario(inventario_creado.id,db)
     assert obtenter_inventario
     assert obtenter_inventario.id == 2
     
 def test_update_inventario(db):
-    inventario = inventario = schemas.inventarios(id=6,cantidad=1006,sucursal_id=26, producto_id=26)
+    inventario = schemas.inventarios(id=6,cantidad=1006,sucursal_id=26, producto_id=26)
     inventario_creado = create_inventario(inventario, db)
     nuevo_inventario = schemas.inventarioUpdate(cantidad=1100,sucursal_id=8, producto_id=8)
     inventario_actualizado = update_inventario(inventario_creado.id, nuevo_inventario, db)
